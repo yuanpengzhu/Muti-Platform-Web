@@ -41,26 +41,27 @@
   <div style="text-align: left">
     <!--  <button id="update-bgColor">update-bgColor</button> -->
     <h1>NG1 firebase universal link</h1>
-    <button id="rplus-f">https://globeonesuperapp.page.link/nASq</button>
+    <button id="rplus-f">https://globeonesuperapp.page.link/nASq</button><br />
+    <a href="https://globeonesuperapp.page.link/nASq">https://globeonesuperapp.page.link/nASq</a><br />
     <br /><br /><br />
     <h1>Http normal link</h1>
-    <button id="rplus-b">https://www.baidu.com</button>
+    <button id="rplus-b">https://www.baidu.com</button><br />
     <a href="https://www.baidu.com">https://www.baidu.com</a><br />
-    <br /><br /><br />
+    <br /><br />
   
     <h1>rplus Deeplink</h1>
-    <button id="rplus-d1">rplus://app/travelshop</button>
-    <button id="rplus-d2">rplus://app/testDeeplink?fromRoot=true</button>
-    <a href="rplus://app/travelshop">rplus://app/travelshop</a>
+    <button id="rplus-d1">rplus://app/travelshop</button><br />
+    <button id="rplus-d2">rplus://app/testDeeplink?fromRoot=true</button><br />
+    <a href="rplus://app/travelshop">rplus://app/travelshop</a><br />
     <a href="rplus://app/testDeeplink?fromRoot=true">rplus://app/testDeeplink?fromRoot=true</a><br />
-    <br /><br /><br />
+    <br /><br />
 
     <h1>Error Deeplink</h1>
-    <button id="rplus-e">haha://www.baidu.com</button>
+    <button id="rplus-e">haha://www.baidu.com</button><br />
     <a href="haha://www.baidu.com">haha://www.baidu.com</a><br />
-    <br /><br /><br />
-    <br />
+    <br /><br />
     <button id="onError">Test error function</button>
+    <button id="onError-2">Test error function closeView</button>
   </div>
   <script>
     window.onerror = function (err) {
@@ -87,14 +88,6 @@
         el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
         if (log.children.length) { log.insertBefore(el, log.children[0]) }
         else { log.appendChild(el) }
-      }
-
-      document.body.appendChild(document.createElement('br'))
-      document.getElementById('onError').onclick = function (e) {
-        e.preventDefault()
-        bridge.callHandler('onError', { 'errorCode': '-1', 'errorMessage':'This is test errorMessage','closeView':true }, function (response) {
-          log('JS got response', response)
-        })
       }
       document.body.appendChild(document.createElement('br'))
       document.getElementById('rplus-f').onclick = function (e) {
@@ -126,6 +119,20 @@
       document.getElementById('rplus-e').onclick = function (e) {
         e.preventDefault()
         bridge.callHandler('handleDeeplink', { 'url': 'haha://www.baidu.com' }, function (response) {
+          log('JS got response', response)
+        })
+      }
+      document.body.appendChild(document.createElement('br'))
+      document.getElementById('onError').onclick = function (e) {
+        e.preventDefault()
+        bridge.callHandler('onError', { 'errorCode': '-1', 'errorMessage':'This is test errorMessage','closeView':false }, function (response) {
+          log('JS got response', response)
+        })
+      }
+      document.body.appendChild(document.createElement('br'))
+      document.getElementById('onError-2').onclick = function (e) {
+        e.preventDefault()
+        bridge.callHandler('onError', { 'errorCode': '-1', 'errorMessage':'This is test errorMessage','closeView':true }, function (response) {
           log('JS got response', response)
         })
       }
