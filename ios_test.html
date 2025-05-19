@@ -50,7 +50,7 @@
     <br /><br /><br />
 
     <h1>Error Deeplink</h1>
-    <div id="rplus-d2">haha://www.baidu.com</div><br /><br />
+    <div id="rplus-e">haha://www.baidu.com</div><br /><br />
     <a href="haha://www.baidu.com">haha://www.baidu.com</a><br />
     <br /><br /><br />
     <br />
@@ -90,13 +90,6 @@
         responseCallback(responseData)
       })
 
-      document.body.appendChild(document.createElement('br'))
-      document.getElementById('Info').onclick = function (e) {
-        e.preventDefault()
-        bridge.callHandler('testCallback', { 'foo': 'bar' }, function (response) {
-          log('JS got response', response)
-        })
-      }
       document.body.appendChild(document.createElement('br'))
       document.getElementById('Info').onclick = function (e) {
         e.preventDefault()
