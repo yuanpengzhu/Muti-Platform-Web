@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <style type='text/css'>
+    html {
+      font-family: Helvetica;
+      color: #222;
+    }
+
+    h1 {
+      color: steelblue;
+      font-size: 24px;
+      margin-top: 24px;
+    }
+
+    button {
+      margin: 0 3px 10px;
+      font-size: 12px;
+    }
+
+    .logLine {
+      border-bottom: 1px solid #ccc;
+      padding: 4px 2px;
+      font-family: courier;
+      font-size: 11px;
+    }
+  </style>
+  <title>Muti-Platform-Web</title>
+  <script src="https://g.alicdn.com/code/lib/vConsole/3.3.4/vconsole.min.js">
+		fffffff
+	</script>
+	<script>
+		console.log(new VConsole());
+	</script>
+</head>
+
+<body>
+  <h1>Muti-Platform-Web-IOS</h1>
+  <div style="text-align: left">
+    <!--  <button id="update-bgColor">update-bgColor</button> -->
+    <h1>NG1 firebase universal link</h1>
+    <button id="rplus-f">https://globeonesuperapp.page.link/nASq</button><br />
+    <br />
+    <h1>Http normal link</h1>
+    <button id="rplus-b">https://www.baidu.com</button><br />
+    <br />
+  
+    <h1>rplus Deeplink</h1>
+    <button id="rplus-d1">rplus://app/travelshop</button><br />
+    <button id="rplus-d2">rplus://app/testDeeplink?fromRoot=true</button><br />
+    <br />
+
+    <h1>Error Deeplink</h1>
+    <button id="rplus-e">haha://www.baidu.com</button><br />
+    <br />
+  </div>
+  <script>
+    window.onerror = function (err) {
+      log('window.onerror: ' + err)
+    }
+
+    function setupWebViewJavascriptBridge(callback) {
+      if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+      if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+      window.WVJBCallbacks = [callback];
+      var WVJBIframe = document.createElement('iframe');
+      WVJBIframe.style.display = 'none';
+      WVJBIframe.src = 'https://__bridge_loaded__';
+      document.documentElement.appendChild(WVJBIframe);
+      setTimeout(function () { document.documentElement.removeChild(WVJBIframe) }, 0)
+    }
+
+    setupWebViewJavascriptBridge(function (bridge) {
+      var uniqueId = 1
+      function log(message, data) {
+        var log = document.getElementById('log')
+        var el = document.createElement('div')
+        el.className = 'logLine'
+        el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
+        if (log.children.length) { log.insertBefore(el, log.children[0]) }
+        else { log.appendChild(el) }
+      }
+      document.body.appendChild(document.createElement('br'))
+      document.getElementById('rplus-f').onclick = function (e) {
+        e.preventDefault()
+        bridge.callHandler('handleDeeplink', { 'url': 'https://globeonesuperapp.page.link/j5A8' }, function (response) {
+          log('JS got response', response)
+        })
+      }
+      document.body.appendChild(document.createElement('br'))
+      document.getElementById('rplus-b').onclick = function (e) {
+        e.preventDefault()
+        bridge.callHandler('handleDeeplink', { 'url': 'https://www.baidu.com' }, function (response) {
+          log('JS got response', response)
+        })
+      }
+      document.getElementById('rplus-d1').onclick = function (e) {
+        e.preventDefault()
+        bridge.callHandler('handleDeeplink', { 'url': 'rplus://app/travelshop' }, function (response) {
+          log('JS got response', response)
+        })
+      }
+      document.getElementById('rplus-d2').onclick = function (e) {
+        e.preventDefault()
+        bridge.callHandler('handleDeeplink', { 'url': 'rplus://app/testDeeplink?fromRoot=true' }, function (response) {
+          log('JS got response', response)
+        })
+      }
+      document.body.appendChild(document.createElement('br'))
+      document.getElementById('rplus-e').onclick = function (e) {
+        e.preventDefault()
+        bridge.callHandler('handleDeeplink', { 'url': 'haha://www.baidu.com' }, function (response) {
+          log('JS got response', response)
+        })
+      }
+    })
+  </script>
+  <div id='log'></div>
+</body>
+
+</html>
