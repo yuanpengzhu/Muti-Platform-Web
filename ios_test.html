@@ -104,24 +104,28 @@
           log('JS got response', response)
         })
       }
+      document.body.appendChild(document.createElement('br'))
       document.getElementById('onError').onclick = function (e) {
         e.preventDefault()
         bridge.callHandler('onError', { 'errorCode': '-1', 'errorMessage':'This is test errorMessage','closeView':true }, function (response) {
           log('JS got response', response)
         })
       }
+      document.body.appendChild(document.createElement('br'))
       document.getElementById('onError').onclick = function (e) {
         e.preventDefault()
         bridge.callHandler('onError', { 'errorCode': '-1', 'errorMessage':'This is test errorMessage','closeView':true }, function (response) {
           log('JS got response', response)
         })
       }
+      document.body.appendChild(document.createElement('br'))
       document.getElementById('rplus-f').onclick = function (e) {
         e.preventDefault()
         bridge.callHandler('handleDeeplink', { 'url': 'https://globeonesuperapp.page.link/j5A8' }, function (response) {
           log('JS got response', response)
         })
       }
+      document.body.appendChild(document.createElement('br'))
       document.getElementById('rplus-b').onclick = function (e) {
         e.preventDefault()
         bridge.callHandler('handleDeeplink', { 'url': 'https://www.baidu.com' }, function (response) {
@@ -140,6 +144,7 @@
           log('JS got response', response)
         })
       }
+      document.body.appendChild(document.createElement('br'))
       document.getElementById('rplus-e').onclick = function (e) {
         e.preventDefault()
         bridge.callHandler('handleDeeplink', { 'url': 'haha://www.baidu.com' }, function (response) {
