@@ -35,22 +35,22 @@
   <div style="text-align: left">
     <!--  <button id="update-bgColor">update-bgColor</button> -->
     <h1>NG1 firebase universal link</h1>
-    <div id="rplus-f">https://globeonesuperapp.page.link/nASq</div><br />
+    <button id="rplus-f">https://globeonesuperapp.page.link/nASq</button><br />
     <br /><br /><br />
     <h1>Http normal link</h1>
-    <div id="rplus-b">https://www.baidu.com</div><br />
+    <button id="rplus-b">https://www.baidu.com</button><br />
     <a href="https://www.baidu.com">https://www.baidu.com</a><br />
     <br /><br /><br />
   
     <h1>rplus Deeplink</h1>
-    <div id="rplus-d1">rplus://app/travelshop</div><br /><br />
-    <div id="rplus-d2">rplus://app/testDeeplink?fromRoot=true</div><br /><br />
+    <button id="rplus-d1">rplus://app/travelshop</button><br /><br />
+    <button id="rplus-d2">rplus://app/testDeeplink?fromRoot=true</button><br /><br />
     <a href="rplus://app/travelshop">rplus://app/travelshop</a><br /><br />
     <a href="rplus://app/testDeeplink?fromRoot=true">rplus://app/testDeeplink?fromRoot=true</a><br />
     <br /><br /><br />
 
     <h1>Error Deeplink</h1>
-    <div id="rplus-e">haha://www.baidu.com</div><br /><br />
+    <button id="rplus-e">haha://www.baidu.com</button><br /><br />
     <a href="haha://www.baidu.com">haha://www.baidu.com</a><br />
     <br /><br /><br />
     <br />
@@ -94,13 +94,6 @@
       document.getElementById('Info').onclick = function (e) {
         e.preventDefault()
         bridge.callHandler('testCallback', { 'foo': 'bar' }, function (response) {
-          log('JS got response', response)
-        })
-      }
-      document.body.appendChild(document.createElement('br'))
-      document.getElementById('onError').onclick = function (e) {
-        e.preventDefault()
-        bridge.callHandler('onError', { 'errorCode': '-1', 'errorMessage':'This is test errorMessage','closeView':true }, function (response) {
           log('JS got response', response)
         })
       }
